@@ -1,6 +1,10 @@
 #include "Admin.h"
 
-Admin::Admin() {};
+Admin::Admin() {
+	cap = 8;
+	len = 0; 
+	liste = new Film[cap];
+};
 
 Film* Admin::getlist() {
 	return liste;
@@ -27,7 +31,7 @@ Film Admin::add(Film new_film) {
 		len++;
 		return liste[len - 1];
 	}
-	else return Film("", "", 0, 0);
+	else return Film("", "", 0, 0, "");
 }
 
 Film Admin::update(string titel, Film new_film) {
@@ -39,7 +43,7 @@ Film Admin::update(string titel, Film new_film) {
 		}
 	}
 	if (gef < 0) {
-		return Film("", "", 0, 0);
+		return Film("", "", 0, 0,"");
 	}
 	else return liste[gef];
 
