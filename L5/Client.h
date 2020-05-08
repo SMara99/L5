@@ -21,6 +21,6 @@ public:
 	~Client();
 	
 	void seen(string genre);
-	//ShellExecute(NULL, "open", "http://dreamincode.net",NULL, NULL, SW_SHOWNORMAL);-pt pornit trailer in browser
+ 
 };
 

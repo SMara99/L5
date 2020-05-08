@@ -1,5 +1,9 @@
 #include "Film.h"
+#include<stdio.h>
 #include <string>
+#include <iostream>
+#include<Windows.h>
+
 using namespace std;
 
 Film::Film() {
@@ -57,5 +61,23 @@ void Film::set_likes(int likes) {
 void Film::set_trailer(string trailer) {
 	this->Trailer = trailer;
 };
+
+bool Film::show() {
+	cout << "\n" << this->get_titel() << " ";
+	cout << this->get_genre() << " ";
+	cout << this->get_jahr() << " ";
+	cout << this->get_likes() << " ";
+	//transform string Trailer in LPCWSTR pt a deschide in browser
+	wstring beta(this->Trailer.begin(), this->Trailer.end());
+	LPCWSTR trailer = beta.c_str();
+	//la fel si pt "open"
+	string alpha = "open";
+	wstring alph(alpha.begin(), alpha.end());
+	LPCWSTR status = alph.c_str();
+	//rulare in browser;
+	ShellExecute(NULL, status, trailer, NULL, NULL, SW_SHOWNORMAL); 
+
+	return true;
+}
 
 Film::~Film() {};

@@ -141,6 +141,7 @@
     <ClCompile Include="Admin.cpp" />
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="Film.cpp" />
+    <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Admin.h" />
