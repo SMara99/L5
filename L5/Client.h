@@ -15,12 +15,16 @@ private:
 		bool seen;
 	};
 	vector<Item> watchlist;
+
 public:
 
 	Client();
 	~Client();
 	
-	void seen(string genre);
+	void ansehen(Film film, string genre);
+	Film add(Film film);
+	void remove(Film film);
+	void opinion(Film film, int i);
  
 };
 

@@ -1,19 +1,21 @@
 #pragma once
 #include "Film.h"
+#include<vector>
+
+using namespace std;
 
 class Admin
 {
 private:
-	Film* liste;
-	int len, cap;
+	vector<Film> liste;
 
 public:
 	Admin();
 	~Admin();
 
-	Film* getlist();
-	Film* remove(Film old_film);
-	Film add(Film new_film);
-	Film update(string titel, Film new_film);
+	vector<Film> getlist();
+	vector<Film> remove(Film old_film);
+	vector<Film> add(Film new_film);
+	Film update(Film old_film, Film new_film);
 };
 

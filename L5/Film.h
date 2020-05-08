@@ -28,6 +28,5 @@ public:
 	void set_trailer(string trailer);
 
 	bool show();
-
 };
 
