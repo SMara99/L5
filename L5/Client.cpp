@@ -34,9 +34,10 @@ void Client::remove(Film film) {
 
 }
 
-void Client::opinion(Film film, int i) {
+Admin Client::opinion(Film film, int i) {
 	Film x(film.get_titel(), film.get_genre(), film.get_jahr, film.get_likes() + 1, film.get_trailer());
 	liste.update(film, x);
+	return liste;
 }
 
 

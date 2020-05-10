@@ -24,7 +24,7 @@ public:
 	void ansehen(Film film, string genre);
 	Film add(Film film);
 	void remove(Film film);
-	void opinion(Film film, int i);
+	Admin opinion(Film film, int i);
  
 };
 
