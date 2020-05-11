@@ -1,13 +1,13 @@
 #include "Admin.h"
 
-Admin::Admin() {
+Repository::Repository() {
 };
 
-vector<Film> Admin::getlist() {
+vector<Film> Repository::getlist() {
 	return liste;
 };
 
-vector<Film> Admin::add(Film new_film) {
+vector<Film> Repository::add(Film new_film) {
 	bool exists = true;
 	for (int i = 0; i < liste.size(); i++) {
 		if (liste[i].get_titel() == new_film.get_titel())
@@ -19,7 +19,7 @@ vector<Film> Admin::add(Film new_film) {
 	return liste;
 }
 
-Film Admin::update(Film old_film, Film new_film) {
+Film Repository::update(Film old_film, Film new_film) {
 	int p = -1;
 	for (int i = 0; i < liste.size(); i++) {
 		if (liste[i].get_titel() == old_film.get_titel()) {
@@ -36,7 +36,7 @@ Film Admin::update(Film old_film, Film new_film) {
 
 };
 
-vector<Film> Admin::remove(Film film) {
+vector<Film> Repository::remove(Film film) {
 	int p = -1;
 
 	for (int i = 0; i < liste.size(); i++) {
@@ -51,4 +51,4 @@ vector<Film> Admin::remove(Film film) {
 	return liste;
 }
 
-Admin::~Admin() {};
+Repository::~Repository() {};

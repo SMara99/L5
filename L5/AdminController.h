@@ -4,14 +4,14 @@
 
 class Admincontrol
 {
-	friend class Admin;
+	friend class Repository;
 
 private:
-	Admin adm;
+	Repository adm;
 	
 public:
 	//constructor
-	Admincontrol(Admin a);
+	Admincontrol(Repository a);
 	//prints all the existing films
 	void printAdminGetlist();
 	//prints the films after the add method

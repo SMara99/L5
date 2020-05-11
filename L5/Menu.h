@@ -5,4 +5,4 @@
 #include "Client.h"
 #include "ClientController.h"
 
-int menu(Admin a, Client c);
+int menu(Repository a, Client c);

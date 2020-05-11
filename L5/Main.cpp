@@ -29,7 +29,7 @@ int main() {
 	b.set_trailer("https://www.youtube.com/watch?v=aJtVL2_fA5w");
 	c.set_trailer("https://www.youtube.com/watch?v=bKL1ImsN-DU");
 	d.set_trailer("https://www.youtube.com/watch?v=mKNJ5vj_sZ0");
-	Admin adm;
+	Repository adm;
 	adm.add(a);
 	adm.add(b);
 	adm.add(c);

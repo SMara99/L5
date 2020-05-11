@@ -5,14 +5,13 @@
 
 using namespace std;
 
-class Client
+class Client//watchlist repository
 {
-	friend class Admin;
 private:
-	Admin liste;
+	Repository liste;
 	struct Item {
 		Film film;
-		bool seen;
+		bool seen;//int id
 	};
 	vector<Item> watchlist;
 
@@ -24,7 +23,7 @@ public:
 	void ansehen(Film film, string genre);
 	Film add(Film film);
 	void remove(Film film);
-	Admin opinion(Film film, int i);
+	Repository opinion(Film film, int i);
  
 };
 

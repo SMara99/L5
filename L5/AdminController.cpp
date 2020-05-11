@@ -2,7 +2,7 @@
 
 using namespace std;
 
-Admincontrol::Admincontrol(Admin a)
+Admincontrol::Admincontrol(Repository a)
 {
 	adm = a;
 }

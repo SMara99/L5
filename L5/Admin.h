@@ -4,18 +4,18 @@
 
 using namespace std;
 
-class Admin
+class Repository
 {
 private:
 	vector<Film> liste;
 
 public:
-	Admin();
-	~Admin();
+	Repository();
+	~Repository();
 
 	vector<Film> getlist();
-	vector<Film> remove(Film old_film);
-	vector<Film> add(Film new_film);
+	vector<Film> remove(Film old_film);//la fel
+	vector<Film> add(Film new_film);//void si exceptie
 	Film update(Film old_film, Film new_film);
 };
 

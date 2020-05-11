@@ -27,6 +27,6 @@ public:
 	void set_likes(int jahr);
 	void set_trailer(string trailer);
 
-	bool show();
+	//bool show();
 };
 

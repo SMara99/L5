@@ -3,7 +3,7 @@
 
 using namespace std;
 
-int menu(Admin a, Client c)
+int menu(Repository a, Client c)
 {
 	Admincontrol ac = Admincontrol(a);
 	Clientcontrol cc = Clientcontrol(c);
