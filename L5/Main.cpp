@@ -6,8 +6,7 @@
 using namespace std;
 
 int main() {
-	Film s("HP","fantasy",2000,5,"https://www.youtube.com/watch?v=VyHV0BRtdxo");
-	s.show();//merge afisarea in browser; :))
+	
 	Film a, b, c, d;
 	a.set_genre("horror");
 	b.set_genre("comedy");
@@ -34,7 +33,7 @@ int main() {
 	adm.add(b);
 	adm.add(c);
 	adm.add(d);
-	Client cln;
+	Resository_Watchlist cln;
 	menu(adm, cln);
 	return 0;
 }

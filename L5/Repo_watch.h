@@ -1,11 +1,11 @@
 #pragma once
 #include<vector>
 #include "Film.h"
-#include "Admin.h"
+#include "Repository.h"
 
 using namespace std;
 
-class Client//watchlist repository
+class Resository_Watchlist
 {
 private:
 	Repository liste;
@@ -17,13 +17,12 @@ private:
 
 public:
 
-	Client();
-	~Client();
+	Resository_Watchlist();
+	~Resository_Watchlist();
 	
-	void ansehen(Film film, string genre);
-	Film add(Film film);
+	void add(Film film);
 	void remove(Film film);
-	Repository opinion(Film film, int i);
+	void opinion(Film film);
  
 };
 

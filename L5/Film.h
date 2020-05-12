@@ -24,7 +24,7 @@ public:
 	void set_titel(string titel);
 	void set_genre(string genre);
 	void set_jahr(int jahr);
-	void set_likes(int jahr);
+	void set_likes(int likes);
 	void set_trailer(string trailer);
 
 	//bool show();

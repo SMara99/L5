@@ -4,12 +4,12 @@
 
 class Clientcontrol
 {
-	friend class Client;
+	friend class Resository_Watchlist;
 private:
-	Client cli;
+	Resository_Watchlist cli;
 public:
 	//constructor
-	Clientcontrol(Client c);
+	Clientcontrol(Resository_Watchlist c);
 	//prints the list with the updated number of likes.
 	void printOpinion(Film film, int i);
 };
