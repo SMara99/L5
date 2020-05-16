@@ -61,7 +61,7 @@ void Film::set_likes(int likes) {
 void Film::set_trailer(string trailer) {
 	this->Trailer = trailer;
 };
-
+/*
 bool Film::show() {
 	cout << "\n" << this->get_titel() << " ";
 	cout << this->get_genre() << " ";
@@ -79,5 +79,6 @@ bool Film::show() {
 
 	return true;
 }
+*/
 
 Film::~Film() {};

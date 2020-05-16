@@ -3,8 +3,7 @@
 
 using namespace std;
 
-int menu(Repository a, Client c)
-{
+int menu(Repository a, Client c) {
 	Admincontrol ac = Admincontrol(a);
 	Clientcontrol cc = Clientcontrol(c);
 	int option;
@@ -15,7 +14,7 @@ int menu(Repository a, Client c)
 		cout << "1) Log in as administrator\n";
 		cout << "2) Log in as user\n";
 		cout << "0) Exit\n";
-
+		
 		cin >> option;
 
 		cout << endl;
@@ -94,7 +93,7 @@ int menu(Repository a, Client c)
 				{
 					Film film;
 
-					c.ansehen();
+					//c.ansehen();
 					break;
 				}
 				case 2:

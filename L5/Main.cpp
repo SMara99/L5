@@ -6,13 +6,11 @@
 using namespace std;
 
 int main() {
-	Film s("HP","fantasy",2000,5,"https://www.youtube.com/watch?v=VyHV0BRtdxo");
-	s.show();//merge afisarea in browser; :))
 	Film a, b, c, d;
-	a.set_genre("horror");
-	b.set_genre("comedy");
-	c.set_genre("horror");
-	d.set_genre("thriller");
+	a.set_genre("Horror");
+	b.set_genre("Sitcom");
+	c.set_genre("Horror");
+	d.set_genre("Thriller");
 	a.set_jahr(2001);
 	b.set_jahr(2013);
 	c.set_jahr(1973);
