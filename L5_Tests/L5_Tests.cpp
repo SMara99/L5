@@ -8,15 +8,33 @@ using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace L5Tests
 {
-	TEST_CLASS(Admin)
+	TEST_CLASS(Repository)
 	{
 	public:
+
+		TEST_METHOD(getlist)
+		{
+			Repository adm;
+			Film s("HP", "fantasy", 2000, 5, "https://www.youtube.com/watch?v=VyHV0BRtdxo");
+			Film a;
+			vector<Film> g;
+			a.set_genre("horror");
+			a.set_jahr(2001);
+			a.set_titel("first");
+			a.set_likes(32859);
+			a.set_trailer("https://www.youtube.com/watch?v=FnCdOQsX5kc");
+			adm.add(a);
+			adm.add(s);
+			g = adm.getlist();
+			Assert::AreEqual(g[0], a);
+		}
 		
 		TEST_METHOD(add)
 		{
-			Admin adm;
+			Repository adm;
 			Film s("HP", "fantasy", 2000, 5, "https://www.youtube.com/watch?v=VyHV0BRtdxo");
 			Film a;
+			vector<Film> g;
 			a.set_genre("horror");		
 			a.set_jahr(2001);			
 			a.set_titel("first");			
@@ -24,12 +42,13 @@ namespace L5Tests
 			a.set_trailer("https://www.youtube.com/watch?v=FnCdOQsX5kc");
 			adm.add(s);
 			adm.add(a);
-			Assert::AreEqual(adm.getlist()[0].get_title(), s);
+			g = adm.getlist();
+			Assert::AreEqual(g[0], s);
 		}
 
 		TEST_METHOD(remove)
 		{
-			Admin adm;
+			Repository adm;
 			Film s("HP", "fantasy", 2000, 5, "https://www.youtube.com/watch?v=VyHV0BRtdxo");
 			Film a;
 			a.set_genre("horror");
@@ -40,21 +59,93 @@ namespace L5Tests
 			adm.add(s);
 			adm.add(a);
 			adm.remove(s);
-			Assert::AreEqual(adm.getlist()[0], a);
+			s = adm.getlist()[0];
+			Assert::AreEqual(s, a);
 		}
 
 		TEST_METHOD(update)
 		{
-			Admin adm;
+			Repository adm;
 			Film s("HP", "fantasy", 2000, 5, "https://www.youtube.com/watch?v=VyHV0BRtdxo");
 			Film a;
+			Film u;
 			a.set_genre("horror");
 			a.set_jahr(2001);
 			a.set_titel("first");
 			a.set_likes(32859);
 			a.set_trailer("https://www.youtube.com/watch?v=FnCdOQsX5kc");
 			adm.add(s);
-			Assert::AreEqual(adm.update(s, a), a);
+			u = adm.update(s, a);
+			Assert::AreEqual(u, a);
+		}
+
+		TEST_METHOD(show_genre)
+		{
+			Repository adm;
+			Film s("HP", "fantasy", 2000, 5, "https://www.youtube.com/watch?v=VyHV0BRtdxo");
+			Film a;
+			vector<Film> g;
+			a.set_genre("horror");
+			a.set_jahr(2001);
+			a.set_titel("first");
+			a.set_likes(32859);
+			a.set_trailer("https://www.youtube.com/watch?v=FnCdOQsX5kc");
+			adm.add(s);
+			g = adm.show_genre("horror");
+			Assert::AreEqual(g[0], a);
+		}
+
+		TEST_METHOD(add_to_watchlist)
+		{
+			Repository adm;
+			Film s("HP", "fantasy", 2000, 5, "https://www.youtube.com/watch?v=VyHV0BRtdxo");
+			Film a;
+			vector<Film> g;
+			a.set_genre("horror");
+			a.set_jahr(2001);
+			a.set_titel("first");
+			a.set_likes(32859);
+			a.set_trailer("https://www.youtube.com/watch?v=FnCdOQsX5kc");
+			g = adm.add_to_watchlist(a);
+			Assert::AreEqual(g[0], a);
+		}
+
+		TEST_METHOD(remove_from_watchlist)
+		{
+			Repository adm;
+			Film s("HP", "fantasy", 2000, 5, "https://www.youtube.com/watch?v=VyHV0BRtdxo");
+			Film a;
+			vector<Film> g;
+			a.set_genre("horror");
+			a.set_jahr(2001);
+			a.set_titel("first");
+			a.set_likes(32859);
+			a.set_trailer("https://www.youtube.com/watch?v=FnCdOQsX5kc");
+			adm.add_to_watchlist(a);
+			adm.add_to_watchlist(s);
+			g = adm.remove_from_watchlist(a);
+			Assert::AreEqual(g[0], s);
+		}
+
+		TEST_METHOD(rating)
+		{
+			Repository adm;
+			Film s("HP", "fantasy", 2000, 5, "https://www.youtube.com/watch?v=VyHV0BRtdxo");
+			Film a;
+			Film g;
+			a.set_genre("horror");
+			a.set_jahr(2001);
+			a.set_titel("first");
+			a.set_likes(32859);
+			a.set_trailer("https://www.youtube.com/watch?v=FnCdOQsX5kc");
+			adm.add(a);
+			adm.add(s);
+			adm.add_to_watchlist(a);
+			adm.add_to_watchlist(s);
+			adm.remove_from_watchlist(a);
+			rating("Y");
+			g = adm.getlist()[0];
+			Assert::AreNotEqual(g, a);
 		}
 	};
 }

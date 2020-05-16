@@ -22,6 +22,8 @@ public:
 
 	//methods uesd by the client
 
+	//returns the watchlist
+	vector<Film> get_watchlist();
 	//returns a vector all the films from a specified genre and all the existing films is the genre is empty
 	vector<Film> show_genre (string genre);
 	//adds a movie to the watchlist

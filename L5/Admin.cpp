@@ -107,4 +107,8 @@ vector<Film> Repository::rating(string opinion)
 	return liste;
 }
 
+vector<Film> Repository::get_watchlist() {
+	return client_watchlist;
+};
+
 Repository::~Repository() {};
