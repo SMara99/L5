@@ -62,7 +62,7 @@ void Film::set_trailer(string trailer) {
 	this->Trailer = trailer;
 };
 
-bool Film::show() {
+/*bool Film::show() {
 	cout << "\n" << this->get_titel() << " ";
 	cout << this->get_genre() << " ";
 	cout << this->get_jahr() << " ";
@@ -78,6 +78,6 @@ bool Film::show() {
 	ShellExecute(NULL, status, trailer, NULL, NULL, SW_SHOWNORMAL); 
 
 	return true;
-}
+}*/
 
 Film::~Film() {};

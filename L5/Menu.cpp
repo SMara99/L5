@@ -90,8 +90,8 @@ int menu(Repository a)
 				{
 				case 1:
 				{
-					int i;
-					string choice,genre,auxopt;
+					int i = 1;
+					string choice, genre, auxopt;
 					cout << "\n Please input desired genre; the entire list will be displayed otherwise \n";
 					cin >> genre;
 					vector<Film> list;
@@ -99,11 +99,17 @@ int menu(Repository a)
 					list = a.show_genre(genre);
 
 					ac.play_trailer(list[0]);
+					cout << "\n add movie to watchlist? type 'Y'-yes or 'N'-no\n";
+					cin >> auxopt;	//auxilliary option that determines whether or not a movie will be added
+					if (auxopt == "Y")
+					{
+						a.add_to_watchlist(list[i]);
+					}
+
 					cout << "\n play the next trailer? type 'Y'-yes or 'N'-no\n";
 					cin >> choice;
-					while (choice == "Y" && i<list.size())
+					while (choice == "Y" && i < list.size())
 					{
-						i = 1;
 						ac.play_trailer(list[i]);
 						cout << "\n add movie to watchlist? type 'Y'-yes or 'N'-no\n";
 						cin >> auxopt;	//auxilliary option that determines whether or not a movie will be added
@@ -119,7 +125,7 @@ int menu(Repository a)
 				}
 				case 2:
 				{
-					string title,rating;
+					string title, rating;
 					int year;
 					cout << "\n Please input title and year of the movie that you would like to remove";
 					cout << "\n title: ";
@@ -146,20 +152,24 @@ int menu(Repository a)
 					client_on = false;
 					break;
 				}
-
 				}
 			}
 		case 0:
+		{
 			cout << "End of Program.\n";
 			on = false;
 			break;
+		}
 		default:
+		{
 			cout << "Not a Valid Choice. \n";
 			cout << "Choose again.\n";
 			cin >> option;
 			break;
 		}
+		} //switch
 		}
-		return 0;
+	}
 	return 0;
 }
+

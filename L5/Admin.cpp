@@ -94,7 +94,7 @@ vector<Film> Repository::rating(string opinion)
 {
 	for (int i = 0; i < liste.size(); i++)
 	{
-		if (liste[i].get_titel() == last_removed.get_titel() && liste[i].get_jahr = last_removed.get_jahr())
+		if (liste[i].get_titel() == last_removed.get_titel() && liste[i].get_jahr() == last_removed.get_jahr())
 		{
 			int likes = liste[i].get_likes(); //initial number of likes
 			if (opinion == "Y")
