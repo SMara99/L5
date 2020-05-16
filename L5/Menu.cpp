@@ -3,10 +3,9 @@
 
 using namespace std;
 
-int menu(Repository a, Client c)
+int menu(Repository a)
 {
 	Admincontrol ac = Admincontrol(a);
-	Clientcontrol cc = Clientcontrol(c);
 	int option;
 	bool on = true;
 	while (on)
@@ -78,11 +77,10 @@ int menu(Repository a, Client c)
 			while (client_on)
 			{
 				cout << "*******************************\n";
-				cout << "1) Play a trailer\n";
-				cout << "2) Add film to watchlist\n";
-				cout << "3) Remove from watchlist\n";
-				cout << "4) Rate a film\n";
-				cout << "0) Exit";
+				cout << "1) Display movies form a certain genre, play each trailer one by one,\nand add the desired movies to the watchlist\n";
+				cout << "2) Remove from watchlist\n";
+				cout << "3) Display watchlist\n";
+				cout << "0) Exit\n";
 
 				cin >> clientoption;
 
@@ -92,30 +90,54 @@ int menu(Repository a, Client c)
 				{
 				case 1:
 				{
-					Film film;
+					int i;
+					string choice,genre,auxopt;
+					cout << "\n Please input desired genre; the entire list will be displayed otherwise \n";
+					cin >> genre;
+					vector<Film> list;
 
-					c.ansehen();
+					list = a.show_genre(genre);
+
+					ac.play_trailer(list[0]);
+					cout << "\n play the next trailer? type 'Y'-yes or 'N'-no\n";
+					cin >> choice;
+					while (choice == "Y" && i<list.size())
+					{
+						i = 1;
+						ac.play_trailer(list[i]);
+						cout << "\n add movie to watchlist? type 'Y'-yes or 'N'-no\n";
+						cin >> auxopt;	//auxilliary option that determines whether or not a movie will be added
+						if (auxopt == "Y")
+						{
+							a.add_to_watchlist(list[i]);
+						}
+						i++;
+						cout << "\n play the next trailer? type 'Y'-yes or 'N'-no\n";
+						cin >> choice;
+					}
 					break;
 				}
 				case 2:
 				{
-					Film newfilm;
-					c.add(newfilm);
+					string title,rating;
+					int year;
+					cout << "\n Please input title and year of the movie that you would like to remove";
+					cout << "\n title: ";
+					cin >> title;
+					cout << "\n year: ";
+					cin >> year;
+
+					ac.print_remove_from_watchlist(title, year);
+
+					cout << "\n [please note]: any other answer will be disconsidered \n Did you like the movie? type 'Y'-yes or 'N'-no\n";
+					cin >> rating;
+					//full list will be displayed with the updated value
+					ac.print_rating(rating);
 					break;
 				}
 				case 3:
 				{
-					Film target;
-					c.remove(target);
-					break;
-				}
-				case 4:
-				{
-					Film target;
-					int i;
-					cout << "input rating: \n";
-					cin >> i;
-					vector<Film> v = c.opinion(target, i).getlist();
+					ac.print_remove_from_watchlist("\n", 999999999);
 					break;
 				}
 				case 0:

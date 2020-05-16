@@ -7,6 +7,25 @@ Admincontrol::Admincontrol(Repository a)
 	adm = a;
 }
 
+bool Admincontrol::play_trailer(Film film) {
+	cout << "\n" << film.get_titel() << " ";
+	cout << film.get_genre() << " ";
+	cout << film.get_jahr() << " ";
+	cout << film.get_likes() << " ";
+	//transform string Trailer in LPCWSTR pt a deschide in browser
+	wstring beta(film.get_trailer().begin(), film.get_trailer().end());
+	LPCWSTR trailer = beta.c_str();
+	//la fel si pt "open"
+	string alpha = "open";
+	wstring alph(alpha.begin(), alpha.end());
+	LPCWSTR status = alph.c_str();
+	//rulare in browser;
+	ShellExecute(NULL, status, trailer, NULL, NULL, SW_SHOWNORMAL);
+
+	return true;
+}
+
+
 void Admincontrol::printAdminGetlist()
 {
 	vector<Film> v = adm.getlist();
@@ -33,3 +52,34 @@ void Admincontrol::printAdminUpdate(Film target, Film newfilm)
 	Film f = adm.update(target,newfilm);
 	cout << f.get_titel() << " " << f.get_genre() << " " << f.get_jahr() << " " << f.get_likes() << " " << f.get_trailer();
 }
+
+void Admincontrol::print_by_genre(string genre)
+{
+	vector<Film> v = adm.show_genre(genre);
+	for (auto it : v)
+		cout << it.get_titel() << " " << it.get_genre() << " " << it.get_jahr() << " " << it.get_likes() << " " << it.get_trailer();
+}
+
+void Admincontrol::print_add_to_watchlist(Film film)
+{
+	vector<Film> v = adm.add_to_watchlist(film);
+	for (auto it : v)
+		cout << it.get_titel() << " " << it.get_genre() << " " << it.get_jahr() << " " << it.get_likes() << " " << it.get_trailer();
+}
+
+void Admincontrol::print_remove_from_watchlist(string title, int year)
+{
+	vector<Film> v = adm.remove_from_watchlist(title, year);
+	for (auto it : v)
+		cout << it.get_titel() << " " << it.get_genre() << " " << it.get_jahr() << " " << it.get_likes() << " " << it.get_trailer();
+}
+
+void Admincontrol::print_rating(string opinion)
+{
+	vector<Film> v = adm.rating(opinion);
+	for (auto it : v)
+		cout << it.get_titel() << " " << it.get_genre() << " " << it.get_jahr() << " " << it.get_likes() << " " << it.get_trailer();
+}
+
+
+
