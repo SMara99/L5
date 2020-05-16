@@ -70,6 +70,7 @@ int menu(Repository a)
 				}
 
 			}
+			break;
 		}
 		case 2:
 		{
@@ -155,6 +156,8 @@ int menu(Repository a)
 				}
 				}
 			}
+			break;
+		}
 		case 0:
 		{
 			cout << "End of Program.\n";
@@ -169,7 +172,8 @@ int menu(Repository a)
 			break;
 		}
 		} //switch
-		}
+		
+		
 	}
 	return 0;
 }
