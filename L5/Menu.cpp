@@ -33,7 +33,7 @@ int menu(Repository a)
 				cout << "2) Add a new film\n";
 				cout << "3) Remove a film\n";
 				cout << "4) Update a film\n";
-				cout << "0) Exit";
+				cout << "0) Exit\n";
 
 				cin >> adminoption;
 
@@ -44,17 +44,20 @@ int menu(Repository a)
 				case 1:
 				{
 					ac.printAdminGetlist();
+					break;
 				}
 				case 2:
 				{
 					Film newfilm;
 					newfilm.set_titel("random");
 					ac.printAdminAdd(newfilm);
+					break;
 				}
 				case 3:
 				{
 					Film target = a.getlist()[0];
 					ac.printAdminRemove(target);
+					break;
 				}
 				case 4:
 				{
@@ -62,6 +65,7 @@ int menu(Repository a)
 					Film newfilm;
 					newfilm.set_titel("Updated");
 					ac.printAdminUpdate(target, newfilm);
+					break;
 				}
 				case 0:
 					cout << "Returning to main menu...\n";
@@ -76,6 +80,7 @@ int menu(Repository a)
 		{
 			client_on = true;
 			int clientoption;
+			vector<Film> watch;
 			while (client_on)
 			{
 				cout << "*******************************\n";
@@ -92,36 +97,39 @@ int menu(Repository a)
 				{
 				case 1:
 				{
-					int i = 1;
+					//plays the first trailer-gives the user the option to add the movie tho their watchlist and to choose whether or not the next trailer in the playlist will play. The option to add each movie to the watchlist is given
+					int i = 0;
 					string choice, genre, auxopt;
 					cout << "\n Please input desired genre; the entire list will be displayed otherwise \n";
 					cin >> genre;
 					vector<Film> list;
 
 					list = a.show_genre(genre);
-
-					ac.play_trailer(list[0]);
+					cout << endl <<  list[i].get_titel() << " " << list[i].get_genre() << " " << list[i].get_jahr() << " " << list[i].get_likes() << " " << list[i].get_trailer() << endl;
+					//ac.play_trailer(list[i]);
 					cout << "\n add movie to watchlist? type 'Y'-yes or 'N'-no\n";
 					cin >> auxopt;	//auxilliary option that determines whether or not a movie will be added
 					if (auxopt == "Y")
 					{
-						a.add_to_watchlist(list[i]);
+						watch = a.add_to_watchlist(list[i]);
 					}
 
+					i++;
 					cout << "\n play the next trailer? type 'Y'-yes or 'N'-no\n";
 					cin >> choice;
-					while (choice == "Y" && i < list.size())
+					while (choice == "Y" && i < list.size() || choice == "y" && i < list.size())
 					{
-						ac.play_trailer(list[i]);
+						cout << endl << list[i].get_titel() << " " << list[i].get_genre() << " " << list[i].get_jahr() << " " << list[i].get_likes() << " " << list[i].get_trailer() << endl;
+						//ac.play_trailer(list[i]);
 						cout << "\n add movie to watchlist? type 'Y'-yes or 'N'-no\n";
 						cin >> auxopt;	//auxilliary option that determines whether or not a movie will be added
-						if (auxopt == "Y")
+						if (auxopt == "Y" || auxopt == "y")
 						{
-							a.add_to_watchlist(list[i]);
+							watch = a.add_to_watchlist(list[i]);
 						}
-						i++;
 						cout << "\n play the next trailer? type 'Y'-yes or 'N'-no\n";
 						cin >> choice;
+						i++;
 					}
 					break;
 				}
@@ -136,7 +144,7 @@ int menu(Repository a)
 					cin >> year;
 
 					ac.print_remove_from_watchlist(title, year);
-
+					watch = a.remove_from_watchlist(title, year);
 					cout << "\n [please note]: any other answer will be disconsidered \n Did you like the movie? type 'Y'-yes or 'N'-no\n";
 					cin >> rating;
 					//full list will be displayed with the updated value
@@ -145,7 +153,8 @@ int menu(Repository a)
 				}
 				case 3:
 				{
-					ac.print_remove_from_watchlist("\n", 999999999);
+					for(auto it : watch)
+						cout << it.get_titel() << " " << it.get_genre() << " " << it.get_jahr() << " " << it.get_likes() << " " << it.get_trailer() << endl;
 					break;
 				}
 				case 0:

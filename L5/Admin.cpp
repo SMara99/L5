@@ -74,20 +74,20 @@ vector<Film> Repository::add_to_watchlist(Film film)
 
 vector<Film> Repository::remove_from_watchlist(string title, int year)
 {
-	bool ok = false;
-	for (int i = 0; i < liste.size(); i++)
+	if (title != "invalid title" && year != 9999)
 	{
-		if (title == client_watchlist[i].get_titel() && year == client_watchlist[i].get_jahr())
+		for (int i = 0; i < client_watchlist.size(); i++)
 		{
-			last_removed = client_watchlist[i];
-			client_watchlist.erase(client_watchlist.begin() + i);
-			ok = true;
-			return client_watchlist;
+			if (title == client_watchlist[i].get_titel() && year == client_watchlist[i].get_jahr())
+			{
+				last_removed = client_watchlist[i];
+				client_watchlist.erase(client_watchlist.begin() + i);
+				return client_watchlist;
+			}
 		}
 	}
 
-	if (ok == false)
-		return client_watchlist;
+	return client_watchlist;
 }
 
 vector<Film> Repository::rating(string opinion)
