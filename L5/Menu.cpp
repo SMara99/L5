@@ -7,6 +7,7 @@ int menu(Repository a)
 {
 	Admincontrol ac = Admincontrol(a);
 	int option;
+	bool client_on;
 	bool on = true;
 	while (on)
 	{
@@ -72,12 +73,12 @@ int menu(Repository a)
 		}
 		case 2:
 		{
-			bool client_on = true;
+			client_on = true;
 			int clientoption;
 			while (client_on)
 			{
 				cout << "*******************************\n";
-				cout << "1) Display movies form a certain genre, play each trailer one by one,\nand add the desired movies to the watchlist\n";
+				cout << "1) Display movies form a certain genre,\n play each trailer one by one,\nand add the desired movies to the watchlist\n";
 				cout << "2) Remove from watchlist\n";
 				cout << "3) Display watchlist\n";
 				cout << "0) Exit\n";
